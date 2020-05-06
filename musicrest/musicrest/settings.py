@@ -73,6 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'musicrest.wsgi.application'
 
+DB_PASSWORD = os.environ.get('PASSWORD')
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -86,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'musicrest',
         'USER': 'Jeremy',
-        'PASSWORD': '123Sav0r1t',
+        'PASSWORD': print(DB_PASSWORD),
         'HOST': 'localhost',
         'PORT': '',
     }
