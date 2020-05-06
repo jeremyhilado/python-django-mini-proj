@@ -173,3 +173,21 @@ class PublicTrackDetail(generics.RetrieveAPIView):
         queryset = Track.objects.all().filter(is_public=True)
 
     serializer_class = TrackSerializer
+
+
+class ArtistAlbums(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        if self.kwargs.get("artist_pk"):
+            artist = Artist.objects.get(pk=self.kwargs["artist_pk"])
+            queryset = Album.objects.filter(
+                owner=self.request.user,
+                artist=artist
+            )
+        return queryset
+
+    serializer_class = AlbumSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

@@ -26,7 +26,7 @@ class Album(models.Model):
     is_public = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.title + " - " + self.artist
+        return self.title + " - " + self.artist.name
 
 
 class Track(models.Model):
@@ -41,4 +41,4 @@ class Track(models.Model):
     is_public = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.track_title + " - " + self.artist + " - " + self.album
+        return self.track_title + " - " + self.artist.name + " - " + self.album.title
