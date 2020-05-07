@@ -13,7 +13,7 @@ router.register('albums', AlbumViewSet, basename='albums')
 router.register('tracks', TrackViewSet, basename='tracks')
 
 custom_urlpatterns = [
-    url(r'artists/(P<artist_pk>\d+)/recipes/$', ArtistAlbums.as_view(), name='artist_albums'),
+    url(r'artists/(P<artist_pk>\d+)/$', ArtistAlbums.as_view(), name='artist_albums'),
     url(r'public-artists/$', PublicArtists.as_view(), name='public_artists'),
     url(r'public-artists/(?P<pk>\d+)/$', PublicArtistDetail.as_view(), name='public_artist_detail'),
     url(r'public-albums/$', PublicAlbums.as_view(), name='public_albums'),
